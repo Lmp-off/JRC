@@ -67,7 +67,7 @@ yarn-error.log*
 *.tmp
 *.temp
 .cache/
-
+*.o
 # === Testing ===
 **/coverage/
 .nyc_output

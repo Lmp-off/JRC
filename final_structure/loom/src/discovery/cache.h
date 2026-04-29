@@ -34,6 +34,7 @@ private:
 };
 
 Cache& get_cache();
+void save_endpoint_to_cache(const std::string& name, const std::string& socket_path);
 
 
 #endif
