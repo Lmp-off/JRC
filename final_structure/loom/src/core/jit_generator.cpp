@@ -36,7 +36,6 @@ std::string generate_adapter_code(const std::string& signature,
     if (uses_string) code << "#include <string>\n";
     code << "\n";
 
-    // typedef user function
     std::string ret_type = normalize_type(return_type);
     code << "typedef " << ret_type << " (*user_func_t)(";
     for (size_t i = 0; i < param_types.size(); ++i) {
@@ -48,12 +47,10 @@ std::string generate_adapter_code(const std::string& signature,
 
     code << "static user_func_t g_user_func_" << unique_id << " = nullptr;\n\n";
 
-    // setter
     code << "extern \"C\" void set_user_func_" << unique_id << "(void* f) {\n";
     code << "    g_user_func_" << unique_id << " = (user_func_t)f;\n";
     code << "}\n\n";
 
-    // adapter
     code << "extern \"C\" void adapter(const void** args, void* result) {\n";
     code << "    if (!g_user_func_" << unique_id << ") return;\n\n";
 
@@ -81,11 +78,9 @@ std::string generate_adapter_code(const std::string& signature,
 }
 
 void* jit_get_adapter(const std::string& raw_signature, void* user_func) {
-    // Нормализация сигнатуры
     std::string signature = raw_signature;
     size_t arrow = signature.find("->");
     if (arrow == std::string::npos) {
-        // Попытка исправить старый формат
         size_t open = signature.find('(');
         if (open != std::string::npos) {
             std::string params = signature.substr(open + 1, signature.find(')') - open - 1);
@@ -106,7 +101,6 @@ void* jit_get_adapter(const std::string& raw_signature, void* user_func) {
     std::string params_str = signature.substr(0, arrow);
     std::string return_type = signature.substr(arrow + 2);
 
-    // trim
     return_type.erase(0, return_type.find_first_not_of(" \t"));
     return_type.erase(return_type.find_last_not_of(" \t") + 1);
 

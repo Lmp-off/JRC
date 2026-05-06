@@ -17,8 +17,8 @@ bool is_logger_active() {
 const char* get_level_name(log_level lv) {
     switch (lv) {
         case LOG_ERROR:   return "[ERROR]";
-        case LOG_WARNING: return "[WARN] ";
-        case LOG_INFO:    return "[INFO] ";
+        case LOG_WARNING: return "[WARN]";
+        case LOG_INFO:    return "[INFO]";
         case LOG_DEBUG:   return "[DEBUG]";
         case LOG_TRACE:   return "[TRACE]";
         default:          return "[????]";
