@@ -1,0 +1,104 @@
+.jrc-tab {
+  height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  animation: crystalReveal 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.jrc-header {
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: slideUpFade 0.5s 0.2s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+}
+
+.jrc-title {
+  font-size: 28px;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 
+    0 0 10px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(136, 204, 255, 0.3);
+  letter-spacing: 1px;
+}
+
+/* Обёртка сферы — появляется с эффектом увеличения и свечения */
+.sphere-wrapper {
+  width: 100%;
+  height: calc(100% - 80px);
+  border-radius: 20px;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #0a0e2a 0%, #000000 100%);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  opacity: 0;
+  transform: scale(0.96);
+  animation: sphereGlowAppear 0.6s 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Эффект мягкого свечения при наведении (опционально) */
+.sphere-wrapper:hover {
+  box-shadow: 
+    0 8px 40px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(100, 180, 255, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+/* Анимация появления всей вкладки */
+@keyframes crystalReveal {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Анимация для заголовка */
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Анимация для сферы: лёгкое увеличение + появление */
+@keyframes sphereGlowAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+    filter: brightness(1.5);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.02);
+    filter: brightness(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+.sphere-wrapper canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 0;
+  animation: canvasFadeIn 0.8s 0.5s forwards;
+}
+
+@keyframes canvasFadeIn {
+  to {
+    opacity: 1;
+  }
+}

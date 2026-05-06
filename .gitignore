@@ -1,0 +1,96 @@
+# === Java / Maven ===
+**/target/
+**/.mvn/
+**/mvnw
+**/mvnw.cmd
+*.class
+*.jar
+*.war
+*.ear
+
+# === Node.js / Frontend ===
+**/node_modules/
+**/dist/
+**/build/
+**/.vite/
+**/coverage/
+**/package-lock.json
+
+# === Python ===
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/.venv/
+**/venv/
+**/env/
+
+# === IDE ===
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# === OS generated files ===
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# === Logs ===
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# === Environment & secrets ===
+.env
+.env.local
+.env.*.local
+.env.production
+*.pem
+*.key
+*.priv
+*.p12
+*.crt
+*.loc
+*.secret
+
+# === Temporary files ===
+*.tmp
+*.temp
+.cache/
+*.o
+# === Testing ===
+**/coverage/
+.nyc_output
+
+# === Spring Boot ===
+**/spring.log
+
+# === Ваши модули и сборки ===
+**/module-lib/
+**/uds-lib/
+
+# === Временные данные (не код) ===
+data/
+test_struct/
+*.desc
+note.txt
+core/concepts
+core/uds-lib/description
+
+# === UDS сокеты (runtime) ===
+*.sock
+
+# === Вложенные .gitignore (оставить только корневой) ===
+**/.gitattributes
+**/dashboard/.gitignore
+**/core/back/.gitignore
