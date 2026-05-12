@@ -10,6 +10,18 @@ metalogger/metalogger.cpp \
 src/tests/main.cpp src/global.cpp \
 -o test -pthread -ldl
 
+
+g++ -std=c++17 -fPIC -shared \
+    src/core/loom.cpp \
+    src/discovery/cache.cpp \
+    src/discovery/capabilities.cpp \
+    src/core/server_core_api.cpp \
+    src/connection/local/uds.cpp \
+    src/core/jit_generator.cpp \
+    metalogger/metalogger.cpp \
+    src/global.cpp \
+    -o libloom.so -pthread -ldl
+    
 */
 
 /*
